@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth');
 const multer = require('../middlewares/multer-config');
 
 
-
+//Appel des différentes routes  (CRUD)
 router.post('/', auth, multer, bookCtrl.createBook);
 
 router.get('/',bookCtrl.getAllBooks);

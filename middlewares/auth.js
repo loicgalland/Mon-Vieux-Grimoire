@@ -1,10 +1,14 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 module.exports = (req, res, next) => {
     try {
+        // Récupération du token
         const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+        // Décodage du token
+        const decodedToken = jwt.verify(token, SECRET_TOKEN);
         const userId = decodedToken.userId;
+        // Renvois du userId pour l'utiliser dans les routes
         req.auth = {
             userId: userId
         };
